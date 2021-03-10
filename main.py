@@ -1,20 +1,13 @@
-def on_b_pressed():
-    scene.set_background_image(assets.image("""
-        Dark Hall
-    """))
-    game.show_long_text("You can't see anything, no matter how hard you try",
-        DialogLayout.BOTTOM)
-    pause(100)
-    game.show_long_text("You feel two buttons: a round one and a square one. Which one will you push?",
-        DialogLayout.BOTTOM)
-    game.show_long_text("Push A for round one, push B for the square one",
-        DialogLayout.BOTTOM)
-    if controller.A.is_pressed():
-        game.show_long_text("You hear a low mechanical noise behind the walls. You decide to wait for it to stop.",
-            DialogLayout.BOTTOM)
-controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
-
-def on_a_pressed():
+scene.set_background_image(assets.image("""
+    entrance1
+"""))
+game.show_long_text("One hall is dim, but lit. One hall is pitch black. Which hall will you go down?",
+    DialogLayout.BOTTOM)
+pause(2000)
+game.show_long_text("Press A for the dim hall or B for the dark hall",
+    DialogLayout.BOTTOM)
+pause(100)
+if controller.A.is_pressed():
     scene.set_background_image(assets.image("""
         dimHall
     """))
@@ -74,14 +67,24 @@ def on_a_pressed():
             DialogLayout.BOTTOM)
         pause(500)
         game.show_long_text("TO BE CONTINUED!", DialogLayout.BOTTOM)
-controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
-
-scene.set_background_image(assets.image("""
-    entrance1
-"""))
-game.show_long_text("One hall is dim, but lit. One hall is pitch black. Which hall will you go down?",
-    DialogLayout.BOTTOM)
-pause(2000)
-game.show_long_text("Press A for the dim hall or B for the dark hall",
-    DialogLayout.BOTTOM)
-pause(100)
+else:
+    scene.set_background_image(assets.image("""
+        Dark Hall
+    """))
+    game.show_long_text("You can't see anything, no matter how hard you try",
+        DialogLayout.BOTTOM)
+    pause(100)
+    game.show_long_text("You feel two buttons: a round one and a square one. Which one will you push?",
+        DialogLayout.BOTTOM)
+    game.show_long_text("Push A for round one, push B for the square one",
+        DialogLayout.BOTTOM)
+    if controller.A.is_pressed():
+        game.show_long_text("You hear a low mechanical noise behind the walls. You decide to wait for it to stop.",
+            DialogLayout.BOTTOM)
+        pause(100)
+        scene.set_background_image(assets.image("""
+            BlueHeat
+        """))
+        game.show_long_text("TO BE CONTINUED!", DialogLayout.BOTTOM)
+    else:
+        game.show_long_text("TO BE CONTINUED!", DialogLayout.BOTTOM)
